@@ -11,7 +11,7 @@ public class ControlMonedas : MonoBehaviour {
 	
 		texto = GetComponent<Text> ();
 		resetear ();
-		suma_monedas (11);
+		suma_monedas (11); //ejemplo de llamar a funciones que necesitan parametros.
 	}
 
 
@@ -21,7 +21,6 @@ public class ControlMonedas : MonoBehaviour {
 
 		if (monedas < 0) {
 			monedas = 0;
-
 		}
 	
 		texto.text = monedas.ToString (); //ToString convierte numeros en cadena de texto.
