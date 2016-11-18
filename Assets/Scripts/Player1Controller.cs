@@ -26,7 +26,7 @@ public class Player1Controller : MonoBehaviour {
 		// transform.localScale.x multiplica esa velocidad maxima por la direccion a donde está mirando el personaje. Esto permite que sea negativa o positiva la velocidad se mueva sin problema y con un límite.
 		//rb.velocity = new Vector2(velocidad_maxima * transform.localScale.x, rb.velocity.y);
 		//}
-		anim.SetFloat("velocidad", Mathf.Abs(rb.velocity.x)); // igualamos la velocidad al valor de velocity para que al moverse el personaje a X velocidad cambie la animación
+		anim.SetFloat("Velocidad", Mathf.Abs(rb.velocity.x)); // igualamos la velocidad al valor de velocity para que al moverse el personaje a X velocidad cambie la animación
 
 		if (Input.GetKey (KeyCode.RightArrow)) {
 			MovimientoDerecha ();
@@ -46,7 +46,7 @@ public class Player1Controller : MonoBehaviour {
 		//
 		if (Input.GetKeyDown (KeyCode.UpArrow) && suelo_cerca) {
 			Salto ();
-			anim.SetBool ("jump", true);
+			anim.SetBool ("Jump", true);
 		}
 
 	}
@@ -72,7 +72,7 @@ public class Player1Controller : MonoBehaviour {
 	void OnTriggerStay2D(Collider2D objeto){
 		if(objeto.tag == "Suelo") {
 			suelo_cerca = true;
-			anim.SetBool ("jump", false);
+			anim.SetBool ("Jump", false);
 		}
 	}
 
@@ -83,7 +83,7 @@ public class Player1Controller : MonoBehaviour {
 	}
 
 	void OnCollisionEnter2D(Collision2D col){
-		if (col.gameObject.tag == "muerte") {
+		if (col.gameObject.tag == "Muerte") {
 			gcs.respaw ();
 		}
 	}
