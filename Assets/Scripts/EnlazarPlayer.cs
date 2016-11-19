@@ -9,7 +9,7 @@ public class EnlazarPlayer : MonoBehaviour {
 		}
 	}
 
-	void OnColissionExit2D(Collision2D col){
+	void OnCollisionExit2D(Collision2D col){
 		if (col.gameObject.tag == "Player"){
 			col.gameObject.transform.parent = null;
 

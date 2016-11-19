@@ -5,7 +5,7 @@ public class Player1Controller : MonoBehaviour {
 
 	private Animator anim;
 	bool suelo_cerca = false;
-	public float velocidad = 100f;
+	public float velocidad = 5f;
 	//public float velocidad_maxima = 5f; LO COMENTADO ES PARA USAR ACELERACIÓN HASTA UNA VELOCIDAD MAXIMA Y NO UNA VELOCIDAD CONSTANTE DESDE INICIO
 	private Rigidbody2D rb;
 	private GameControlScript gcs;
