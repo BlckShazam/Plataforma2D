@@ -9,6 +9,7 @@ public class Player1Controller : MonoBehaviour {
 	//public float velocidad_maxima = 5f; LO COMENTADO ES PARA USAR ACELERACIÓN HASTA UNA VELOCIDAD MAXIMA Y NO UNA VELOCIDAD CONSTANTE DESDE INICIO
 	private Rigidbody2D rb;
 	private GameControlScript gcs;
+	public float fuerza = 300f;
 
 
 	// Use this for initialization
@@ -66,7 +67,7 @@ public class Player1Controller : MonoBehaviour {
 	}
 
 	void Salto() {
-		GetComponent<Rigidbody2D> ().AddForce (Vector2.up*300);
+		GetComponent<Rigidbody2D> ().AddForce (Vector2.up*fuerza);
 	}
 
 	void OnTriggerStay2D(Collider2D objeto){
