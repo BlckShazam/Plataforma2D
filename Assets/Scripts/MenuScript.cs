@@ -26,7 +26,7 @@ public class MenuScript : MonoBehaviour {
 	}
 
 	public void opciones (){
-			menu_pausa = false;
+			menu_pausa = true;
 			anim.SetBool ("opciones", true);
 			anim.SetBool ("pausa", true);
 
@@ -35,7 +35,7 @@ public class MenuScript : MonoBehaviour {
 	public void pausa(){
 		Time.timeScale = 0;
 		anim.SetBool ("pausa", true); //SetBool da un valor booleado a la animacion y este se especifica despues.
-		anim.SetBool ("opciones", false);
+		anim.SetBool ("opciones", false); 
 	
 	}
 
