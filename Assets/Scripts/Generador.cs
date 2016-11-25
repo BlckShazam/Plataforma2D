@@ -22,7 +22,7 @@ public class Generador : MonoBehaviour {
 			// generar un RANDOM.RANGE del array usando .Length y especificando el -1 porque cuenta hasta 10 elementos, pero al establecer el 0 como iniciar, habría 11 y se debe restar uno para que sean 10 elementos.
 
 			
-			if (Golpeado <= 3) {
+			if (Golpeado < 3) {
 				
 				moneda_nueva = (GameObject)Instantiate (monedas [numero_moneda],
 					pos_salida.position,
@@ -31,6 +31,10 @@ public class Generador : MonoBehaviour {
 				anim.SetBool ("golpea", true);
 
 				Golpeado++;
+
+				if (Golpeado == 3) {
+					anim.SetBool ("Congelada", true);
+				}
 			}
 		}
 	}
