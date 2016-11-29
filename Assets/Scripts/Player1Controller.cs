@@ -7,6 +7,7 @@ public class Player1Controller : MonoBehaviour {
 	bool suelo_cerca = false;
 	public float velocidad = 5f;
 	//public float velocidad_maxima = 5f; LO COMENTADO ES PARA USAR ACELERACIÓN HASTA UNA VELOCIDAD MAXIMA Y NO UNA VELOCIDAD CONSTANTE DESDE INICIO
+	public GameObject particulas_muerte;
 	private Rigidbody2D rb;
 	private GameControlScript gcs;
 	public float fuerza = 300f;
@@ -85,7 +86,8 @@ public class Player1Controller : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D col){
 		if (col.gameObject.tag == "Muerte") {
-			gcs.respaw ();
+			//gcs.respaw ();
+			Instantiate(particulas_muerte, transform.position, transform.rotation);   //Instantiate es coger algo de un prefab de la escena y meterlo. Necesita de: Prefab, posicion y rotacion
 		}
 	}
 }
