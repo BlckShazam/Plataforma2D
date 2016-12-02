@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+[RequireComponent(typeof(AudioSource))]
+[RequireComponent(typeof(Animator))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class Player1Controller : MonoBehaviour {
 
 	private Animator anim;
@@ -8,15 +10,22 @@ public class Player1Controller : MonoBehaviour {
 	public float velocidad = 5f;
 	//public float velocidad_maxima = 5f; LO COMENTADO ES PARA USAR ACELERACIÓN HASTA UNA VELOCIDAD MAXIMA Y NO UNA VELOCIDAD CONSTANTE DESDE INICIO
 	public GameObject particulas_muerte;
+	public float fuerza = 300f;
+	public AudioClip sonido_salto;
+	public AudioClip sonido_herir;
+	public AudioClip sonido_moneda;
+
+	private AudioSource audio;
 	private Rigidbody2D rb;
 	private GameControlScript gcs;
-	public float fuerza = 300f;
+
 
 
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<Animator> ();
 		rb = GetComponent<Rigidbody2D> ();
+		audio = GetComponent<AudioSource> ();
 		gcs = GameObject.Find ("GameControl").GetComponent<GameControlScript> ();
 	}
 
@@ -49,6 +58,7 @@ public class Player1Controller : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.UpArrow) && suelo_cerca) {
 			Salto ();
 			anim.SetBool ("Jump", true);
+			audio.PlayOneShot (sonido_salto);
 		}
 
 	}
@@ -86,8 +96,17 @@ public class Player1Controller : MonoBehaviour {
 
 	void OnCollisionEnter2D(Collision2D col){
 		if (col.gameObject.tag == "Muerte") {
-			//gcs.respaw ();
-			Instantiate(particulas_muerte, transform.position, transform.rotation);   //Instantiate es coger algo de un prefab de la escena y meterlo. Necesita de: Prefab, posicion y rotacion
+			Invoke ("muerte", 1);
+			//InvokeRepeating hace que se generen objetos cada X tiempo
+			audio.PlayOneShot (sonido_herir);
+			Instantiate (particulas_muerte, transform.position, transform.rotation);   //Instantiate es coger algo de un prefab de la escena y meterlo. Necesita de: Prefab, posicion y rotacion
 		}
+		if (col.gameObject.tag == "Moneda" ) {
+			audio.PlayOneShot (sonido_moneda);
+		}
+	}
+
+	void muerte (){
+		gcs.respaw ();
 	}
 }
