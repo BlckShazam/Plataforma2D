@@ -33,12 +33,13 @@ public class Carro : MonoBehaviour {
 
 	void OnCollisionEnter2D (Collision2D col){
 
-	if (col.gameObject.tag == "Pared") {
+		if (col.gameObject.tag == "Pared") {
 			speed = 10f;
-		}
-		if (col.gameObject.tag == "ParedDos"){
+			}
+		if (col.gameObject.tag == "ParedDos") {
 			speed = -10f;
+			}
 		}
+		
 	}
-}
 
